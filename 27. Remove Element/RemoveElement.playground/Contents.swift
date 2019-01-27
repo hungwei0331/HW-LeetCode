@@ -15,29 +15,22 @@ Note that the order of those five elements can be arbitrary.
 It doesn't matter what values are set beyond the returned length.
 */
 
-var nums = [3,2,2,3]
-var val  = 3
+//var nums = [3,2,2,3]
+//var val  = 3
 
-//var nums = [0,1,2,2,3,0,4,2]
-//var val  = 2
+var nums = [0,1,2,2,3,0,4,2]
+var val  = 2
 
 func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
-    
-    //var resultArray = [Int]()
-    
-//    if nums.contains(val) {
-//        nums.remove(at: val)
-//        print(nums)
-//    }
-    
-    for num in nums {
-        if num == val && nums.contains(val) {
-            nums.remove(at: val)
-            print(nums)
+    var resultArray = nums
+    for num in resultArray {
+        if num == val && resultArray.contains(val) {
+            let index = resultArray.index(of: val)
+            resultArray.remove(at: index!)
+            print(resultArray)
         }
     }
-    
-    
+    nums = resultArray
     return nums.count
 }
 
