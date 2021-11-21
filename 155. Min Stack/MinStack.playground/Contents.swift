@@ -31,6 +31,8 @@ int getMin() retrieves the minimum element in the stack.
  minStack.getMin(); // return -2
 */
 
+//MARK: - 80 ms, faster than 50.57% of Swift online submissions for Min Stack.
+
 
 class MinStack {
     
@@ -95,34 +97,5 @@ class MinStack {
     }
 }
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//class Solution {
-//    func singleNumber(_ nums: [Int]) -> Int {
-//
-//
-//
-//        return 0
-//    }
-//}
-//
-//let nums = [4,1,2,1,2]
-////let nums = [2,2,1]
-//
-//
-//
-//print(Solution().singleNumber(nums))
 
 
