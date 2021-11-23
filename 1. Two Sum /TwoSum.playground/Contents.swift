@@ -15,18 +15,30 @@ return [0, 1].
 let nums   = [3,2,4]
 let target = 6
 
+// 90 ms, faster than 30.31% of Swift online submissions for Two Sum.
 // kind of bubble sort
+
 func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+    
+    var fristIndex: Int = 0
+    var secondIndex: Int = 0
+    
     for (index, value) in nums.enumerated() {
-        let tmpTarget = target - value
+        
         let nextIndex = index + 1
-        for tmpIndex in nextIndex..<nums.count {
-            if ((tmpTarget - nums[tmpIndex]) == 0) {
-                return [index, tmpIndex]
+        
+        for nextIndex in nextIndex..<nums.count {
+            
+            if value + nums[nextIndex] == target {
+                fristIndex = index
+                secondIndex = nextIndex
             }
         }
+        
     }
-    return[0]
+    return [fristIndex, secondIndex]
 }
 
 twoSum(nums, target)
+
+
