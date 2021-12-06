@@ -21,30 +21,17 @@ let x = 121
 
 func isPalindrome(_ x: Int) -> Bool {
     
-    var palindrome = Array(String(x))
-    //var reverserdPalindrome = Array(palindrome.reversed())
-    var reverserdPalindrome = Array<Character>()
-    var isPalindrome = false
-    var totalCount = 0
-    
-    for arrayIndex in 0..<palindrome.count {
-        reverserdPalindrome.append(palindrome[(palindrome.count - 1) - arrayIndex])
-    }
-    print(reverserdPalindrome)
-    
-    for (index, value) in palindrome.enumerated() {
-        if (palindrome[index] == reverserdPalindrome[index]) {
-            totalCount = totalCount + 1
-            if (totalCount == palindrome.count) {
-                isPalindrome = true
-                return isPalindrome
-            }
+    let originString = String(x)
+    let reverseString = String(originString.reversed())
+
+    for index in originString.indices {
+        if originString[index] == reverseString[index] {
+            continue
         } else {
-            isPalindrome = false
-            return isPalindrome
+            return false
         }
     }
-    return isPalindrome
+    return true
 }
 
 isPalindrome(x)
