@@ -16,25 +16,59 @@
  
  */
 
+//Runtime: 50 ms, faster than 93.43% of Swift online submissions for Remove Duplicates from Sorted Array.
+//Memory Usage: 14.7 MB, less than 54.14% of Swift online submissions for Remove Duplicates from Sorted
+
 //var nums = [1,1,2]
 var nums = [0,0,1,1,1,2,2,3,3,4]
 
 func removeDuplicates(_ nums: inout [Int]) -> Int {
     
-    var resultArray = [Int]()
+    if nums.count < 2 { return nums.count }
+
+    var i = 0
     
-    for num in nums {
-        if !resultArray.contains(num)  {
-            resultArray.append(num)
-        }  else {
-            continue
+    for j in 0..<nums.count {
+        if nums[i] != nums[j] {
+            i = i + 1
+            nums[i] = nums[j]
         }
     }
-    
-    nums = resultArray
-    return nums.count
+    return i + 1
 }
 
 print(removeDuplicates(&nums))
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//func removeDuplicates(_ nums: inout [Int]) -> Int {
+//
+//    if nums.count < 1 { return nums.count }
+//
+//    var j = 0
+//
+//    for i in 1..<nums.count {
+//        if nums[i] != nums[i - 1] {
+//            j = j + 1
+//            nums[j] = nums[i]
+//        }
+//    }
+//    print(nums)
+//    return j + 1
+//}
