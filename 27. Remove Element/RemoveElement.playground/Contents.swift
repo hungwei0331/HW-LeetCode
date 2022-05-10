@@ -15,6 +15,9 @@ Note that the order of those five elements can be arbitrary.
 It doesn't matter what values are set beyond the returned length.
 */
 
+//Runtime: 12 ms, faster than 13.11% of Swift online submissions for Remove Element.
+//Memory Usage: 14.1 MB, less than 43.85% of Swift online submissions for Remove Element.
+
 //var nums = [3,2,2,3]
 //var val  = 3
 
@@ -22,16 +25,16 @@ var nums = [0,1,2,2,3,0,4,2]
 var val  = 2
 
 func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
-    var resultArray = nums
-    for num in resultArray {
-        if num == val && resultArray.contains(val) {
-            let index = resultArray.index(of: val)
-            resultArray.remove(at: index!)
-            print(resultArray)
+    
+    var j = 0
+    
+    for i in 0..<nums.count {
+        if nums[i] != val {
+            nums[j] = nums[i]
+            j = j + 1
         }
     }
-    nums = resultArray
-    return nums.count
+    return j
 }
 
 removeElement(&nums, val)
