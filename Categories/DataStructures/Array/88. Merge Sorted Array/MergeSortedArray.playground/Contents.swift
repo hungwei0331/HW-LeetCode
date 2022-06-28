@@ -31,6 +31,11 @@ The final sorted array should not be returned by the function, but instead be st
 //Runtime: 97 ms, faster than 5.78% of Swift online submissions for Merge Sorted Array.
 //Memory Usage: 14.4 MB, less than 15.92% of Swift online submissions for Merge Sorted Array.
 
+/*
+ Step1. merge nums2 to nums1
+ Step2. sort num1 after merged
+ */
+
 import Foundation
 
 class Solution {
