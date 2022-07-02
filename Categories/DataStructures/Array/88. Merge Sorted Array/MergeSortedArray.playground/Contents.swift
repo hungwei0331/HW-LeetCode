@@ -28,8 +28,8 @@ The final sorted array should not be returned by the function, but instead be st
  Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
  */
 
-//Runtime: 97 ms, faster than 5.78% of Swift online submissions for Merge Sorted Array.
-//Memory Usage: 14.4 MB, less than 15.92% of Swift online submissions for Merge Sorted Array.
+//Runtime: 15 ms, faster than 31.65% of Swift online submissions for Merge Sorted Array.
+//Memory Usage: 13.9 MB, less than 80.73% of Swift online submissions for Merge Sorted Array.
 
 /*
  Step1. merge nums2 to nums1
@@ -41,6 +41,8 @@ import Foundation
 class Solution {
     func merge(_ nums1: inout [Int], _ m: Int, _ nums2: [Int], _ n: Int) {
  
+        if nums2.isEmpty { return }
+
         var i = m
         
         if !nums2.isEmpty {
@@ -57,5 +59,10 @@ var num1 = [1,2,3,0,0,0]
 var m = 3
 var num2 = [2,5,6]
 var n = 3
+
+// var num1 = [0]
+// var m = 0
+// var num2 = [1]
+// var n = 1
 
 print(Solution().merge(&num1, m, num2, n))
