@@ -22,7 +22,7 @@
  */
 
 /*
- Step1. (n / 5^1) + (n / 5^2) + (n / 5^3) + ... + (n / 5^k)
+ Step1. f(n) = (n / 5^1) + (n / 5^2) + (n / 5^3) + ... + (n / 5^k)
 
  */
 
@@ -44,5 +44,5 @@ class Solution {
 }
 
 
-var nums = 10
+var nums = 7
 print(Solution().trailingZeroes(nums))
