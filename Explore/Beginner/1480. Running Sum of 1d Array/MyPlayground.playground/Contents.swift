@@ -24,8 +24,18 @@
 class Solution {
     func runningSum(_ nums: [Int]) -> [Int] {
         
+        var tmpNums = nums
+        var tmpSum: Int = 0
         
+        for (index, value) in nums.enumerated() {
+            tmpSum = value + tmpSum
+            tmpNums[index] = tmpSum
+        }
         
-        return []
+        return tmpNums
     }
 }
+
+let ints = Solution().runningSum([1,2,3,4])
+print("ints", ints)
+print("")
