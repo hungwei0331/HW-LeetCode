@@ -21,9 +21,8 @@
  Output: [3,4,6,16,17]
  */
 
-class Solution {
+class Solution1 {
     func runningSum(_ nums: [Int]) -> [Int] {
-        
         var tmpNums = nums
         var tmpSum: Int = 0
         
@@ -31,11 +30,17 @@ class Solution {
             tmpSum = value + tmpSum
             tmpNums[index] = tmpSum
         }
-        
         return tmpNums
     }
 }
 
-let ints = Solution().runningSum([1,2,3,4])
-print("ints", ints)
-print("")
+class Solution2 {
+    func runningSum(_ nums: [Int]) -> [Int] {
+        var tmpNums = nums
+        for i in 0..<nums.count - 1 {
+            tmpNums[i + 1] = tmpNums[i] + tmpNums[i + 1]
+        }
+        return tmpNums
+    }
+}
+
