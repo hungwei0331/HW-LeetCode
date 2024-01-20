@@ -22,7 +22,7 @@ class Solution {
                 writer = writer + 1
             }
         }
-    
+        
         while writer < nums.count {
             nums[writer] = 0
             writer = writer + 1
