@@ -30,18 +30,23 @@
  myLinkedList.get(1);              // return 3
  */
 
-
+// O(1) for addAtHead. O(k) for get, addAtIndex and deleteAtIndex,
+// where kkk is an index of the element
+// O(N) for addAtTail.
+// SC: O(1)
 class MyLinkedList {
     
     var head: Node?
-    var count = 0
-
+    var count: Int
+    
     init() {
-        
+        self.head = nil
+        self.count = 0
     }
     
     func get(_ index: Int) -> Int {
         if index >= count { return -1 }
+        
         var node = head
         for _ in 0..<index {
             node = node?.next
@@ -54,7 +59,6 @@ class MyLinkedList {
         node.next = head
         head = node
         count = count + 1
-        
     }
     
     func addAtTail(_ val: Int) {
@@ -67,6 +71,7 @@ class MyLinkedList {
         while current?.next != nil {
             current = current?.next
         }
+        
         var node = Node(val)
         current?.next = node
         count = count + 1
@@ -86,6 +91,7 @@ class MyLinkedList {
             prev = current
             current = current?.next
         }
+        
         var node = Node(val)
         prev?.next = node
         node.next = current
@@ -107,25 +113,16 @@ class MyLinkedList {
             prev = current
             current = current?.next
         }
+        
         prev?.next = current?.next
         count = count - 1
     }
 }
 
 class Node {
-    var val: Int = 0
+    var val: Int
     var next: Node?
     init(_ val: Int) {
         self.val = val
     }
 }
-
-/**
- * Your MyLinkedList object will be instantiated and called as such:
- * let obj = MyLinkedList()
- * let ret_1: Int = obj.get(index)
- * obj.addAtHead(val)
- * obj.addAtTail(val)
- * obj.addAtIndex(index, val)
- * obj.deleteAtIndex(index)
- */
