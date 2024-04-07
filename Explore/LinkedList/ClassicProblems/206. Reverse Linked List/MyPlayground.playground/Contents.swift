@@ -43,9 +43,10 @@ class Solution2 {
             return head
         }
         
-        var reverseNode = reverseList(head?.next)
+        var reverseList = reverseList(head?.next)
         head?.next?.next = head
         head?.next = nil
-        return reverseNode
+        
+        return reverseList
     }
 }
