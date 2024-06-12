@@ -38,13 +38,13 @@ class Solution {
         while !queue.isEmpty {
             let (row, col) = queue.removeFirst()
             for direction in directopns {
-                var nextRow = row + direction[0]
-                var nextCol = col + direction[1]
+                let nextRow = row + direction[0]
+                let nextCol = col + direction[1]
                 
                 if nextRow < 0 ||
                     nextRow >= rooms.count ||
                     nextCol < 0 ||
-                    nextCol >= rooms.count ||
+                    nextCol >= rooms[0].count ||
                     rooms[nextRow][nextCol] != 2147483647 {
                     continue
                 }
