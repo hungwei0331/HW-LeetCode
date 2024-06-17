@@ -41,7 +41,7 @@ class MinStack {
     
     func push(_ val: Int) {
         stack.append(val)
-        if minStack.isEmpty || val < minStack.last! {
+        if minStack.isEmpty || val <= minStack.last! {
             minStack.append(val)
         }
     }
@@ -50,7 +50,6 @@ class MinStack {
         if let topElement = stack.popLast(), topElement == minStack.last {
             minStack.popLast()
         }
-        stack.popLast()
     }
     
     func top() -> Int {
