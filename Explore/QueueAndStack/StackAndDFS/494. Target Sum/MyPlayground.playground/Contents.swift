@@ -28,7 +28,7 @@ class Solution {
     func findTargetSumWays(_ nums: [Int], _ target: Int) -> Int {
         var count = nums.count
         var sum = nums.reduce(0, +)
-        if target < sum || target > sum { return 0 }
+        if target < -sum || target > sum { return 0 }
         
         var dp = Array(repeating: Array(repeating: 0, count: sum * 2 + 1), count: count)
         dp[0][sum + nums[0]] = 1
@@ -39,7 +39,7 @@ class Solution {
             for j in 0...2 * sum {
                 if dp[i - 1][j] > 0 {
                     dp[i][j + num] += dp[i - 1][j]
-                    dp[i][j + num] += dp[i - 1][j]
+                    dp[i][j - num] += dp[i - 1][j]
                 }
             }
         }
