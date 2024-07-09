@@ -80,7 +80,7 @@ class Solution {
                     continue
                 }
                 grid[nextRow][nextCol] = "0"
-                queue.append((row, col))
+                queue.append((nextRow, nextCol))
             }
         }
     }
