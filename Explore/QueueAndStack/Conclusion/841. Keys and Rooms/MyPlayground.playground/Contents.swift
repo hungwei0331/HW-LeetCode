@@ -29,7 +29,7 @@ class Solution {
     func canVisitAllRooms(_ rooms: [[Int]]) -> Bool {
         guard let first = rooms.first else { return false }
         
-        var visited = Set<Int>()
+        var visited: Set<Int> = [0]
         var queue = [first]
         var count = 0
         var rooms = rooms
