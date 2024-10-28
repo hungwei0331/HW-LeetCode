@@ -37,26 +37,28 @@ public class TreeNode {
 class Solution {
     var count = 0
     func countUnivalSubtrees(_ root: TreeNode?) -> Int {
-        return 0
+        isUnivalueSubtree(root)
+        return count
     }
     
-    func isUnivalSubtrees(_ node: TreeNode?) -> Bool {
+    @discardableResult
+    private func isUnivalueSubtree(_ node: TreeNode?) -> Bool {
         if node == nil { return true }
         
-        let isLeftUnivalSubtrees = isUnivalSubtrees(node?.left)
-        let isRightUnivalSubtrees = isUnivalSubtrees(node?.right)
+        let leftIsUnivalue = isUnivalueSubtree(node?.left)
+        let rightIsUnivalue = isUnivalueSubtree(node?.right)
         
-        if isLeftUnivalSubtrees && isLeftUnivalSubtrees {
+        if leftIsUnivalue, rightIsUnivalue {
             if let left = node?.left, left.val != node?.val {
                 return false
             }
-            
             if let right = node?.right, right.val != node?.val {
                 return false
             }
-            count = count + 1
+            count += 1
             return true
         }
         return false
     }
 }
+
