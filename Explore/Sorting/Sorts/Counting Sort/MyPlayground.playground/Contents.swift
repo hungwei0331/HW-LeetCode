@@ -37,3 +37,38 @@ var list = [5, 4, 5, 5, 1, 1, 3]
 Solution().countingSort(&list)
 print(list)
 print()
+
+class Solution1 {
+    func countingSortWithShift(_ list: inout [Int]) {
+        let min = list.min()!
+        let max = list.max()!
+        let range = max - min + 1
+        var counts = [Int](repeating: 0, count: range)
+        
+        for element in list {
+            counts[element - min] += 1
+        }
+        
+        var startIndex = 0
+        for (i, count) in counts.enumerated() {
+            let index = counts[i]
+            counts[i] = startIndex
+            startIndex = startIndex + count
+        }
+        
+        var sortedList = [Int](repeating: 0, count: list.count)
+        for element in list {
+            sortedList[counts[element - min]] = element
+            counts[element - min] += 1
+        }
+        
+        for i in 0..<list.count {
+            list[i] = sortedList[i]
+        }
+    }
+}
+
+var list1 = [3,8,-10,23,19,-4,-14,27]
+Solution1().countingSortWithShift(&list1)
+print(list1)
+print()
