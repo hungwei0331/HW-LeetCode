@@ -54,4 +54,33 @@ Solution().radixSort(&list)
 print(list)
 print()
 
+// Radix Sort 2
+// TC: O(n^2) SC: O(1)
 
+class Solution2 {
+    func radixSort(_ list: [Int]) -> [Int] {
+        if list.count < 2 { return list }
+        
+        let base = 10
+        var maxValue = list.max()!
+        var list = list
+        var placeVal = 1
+        
+        while placeVal < maxValue {
+            var bucket = [[Int]](repeating: [], count: base)
+            
+            for num in list {
+                let digital = (num / placeVal) % 10
+                bucket[digital].append(num)
+            }
+            list = bucket.flatMap{ $0 }
+            placeVal = placeVal * base
+        }
+        return list
+    }
+}
+
+var list2 = [831, 443, 256, 336, 736, 907]
+let result = Solution2().radixSort(list2)
+print(list2)
+print()
