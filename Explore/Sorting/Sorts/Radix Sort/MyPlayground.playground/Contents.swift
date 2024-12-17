@@ -39,7 +39,7 @@ class Solution {
         let max = list.max()!
         var placeVal = 1
         while placeVal < max {
-            countingSort(&list, placeVal, list.count)
+            countingSort(&list, placeVal)
             placeVal = placeVal * 10
         }
         
