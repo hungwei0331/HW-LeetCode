@@ -19,7 +19,7 @@ class Solution {
             }
         }
         
-        for i in 0..<k {
+        for i in 0..<buckets.count {
             buckets[i].sort()
         }
         
