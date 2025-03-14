@@ -1,59 +1,37 @@
 
-// Radix Sort
-// TC: O(W(N+K)),  Let W be the maximum digit length within the list of integers.
-// Let N be the size of the original input integer array. And lastly, since we are using counting sort,
-// we must also be aware of the alphabet size K.
-// SC: O(N+K),  The amount of extra space needed is the same as counting sort – O(N+K).
+// Quick Sort
+// TC: O(n log n), SC: O(n log n)
 
 class Solution {
-    func countingSort(_ list: inout [Int], _ placeVal: Int, _ k: Int = 10) {
-        var counts = [Int](repeating: 0, count: k)
-        
-        for num in list {
-            let digital = (num / placeVal) % 10
-            counts[digital] = counts[digital] + 1
-        }
-        
-        var startIndex = 0
-        for i in 0..<counts.count {
-            let count = counts[i]
-            counts[i] = startIndex
-            startIndex = startIndex + count
-        }
-        
-        var sortedList = [Int](repeating: 0, count: list.count)
-        for num in list {
-            let digital = (num / placeVal) % 10
-            let index = counts[digital]
-            sortedList[index] = num
-            counts[digital] = counts[digital] + 1
-        }
-        
-        for i in 0..<sortedList.count {
-            list[i] = sortedList[i]
-        }
+    func sortArray(_ list: [Int]) -> [Int] {
+        var list = list
+        qucikSort(&list, 0, list.count - 1)
+        return list
     }
     
-    func radixSort(_ list: inout [Int]) {
-        var shift = list.min()!
-        for i in 0..<list.count {
-            list[i] = list[i] - shift
-        }
+    func qucikSort(_ list: inout [Int], _ left: Int, _ right: Int) {
+        if left >= right { return }
+        var pivotIndex = partition(&list, left, right)
+        qucikSort(&list, left, pivotIndex - 1)
+        qucikSort(&list, pivotIndex + 1, right)
+    }
+    
+    func partition(_ list: inout [Int], _ left: Int, _ right: Int) -> Int {
+        var pivot = list[right]
+        var i = left
         
-        let max = list.max()!
-        var placeVal = 1
-        while placeVal < max {
-            countingSort(&list, placeVal)
-            placeVal = placeVal * 10
+        for j in left...right {
+            if list[j] < pivot {
+                list.swapAt(i, j)
+                i = i + 1
+            }
         }
-        
-        for i in 0..<list.count {
-            list[i] = list[i] + shift
-        }
+        list.swapAt(i, right)
+        return i
     }
 }
 
 var list = [256,336,736,443,831,907]
-Solution().radixSort(&list)
+Solution().sortArray(list)
 print(list)
 print()
