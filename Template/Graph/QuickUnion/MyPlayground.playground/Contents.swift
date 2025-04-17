@@ -3,23 +3,24 @@
  */
 
 
-class QuickUnion {
+class QucikUnion {
     var root: [Int]
     
     init(_ size: Int) {
-        root = Array(0..<size)
+        root = Array(0...size)
     }
     
     func find(_ x: Int) -> Int {
+        var x = x
         while x != root[x] {
-            root[x] = x
+            x = root[x]
         }
-        return root[x]
+        return x
     }
     
     func union(_ x: Int, _ y: Int) {
-        var rootX = find(x)
-        var rootY = find(y)
+        let rootX = find(x)
+        let rootY = find(y)
         
         if rootX != rootY {
             root[rootY] = rootX
@@ -27,6 +28,7 @@ class QuickUnion {
     }
     
     func connected(_ x: Int, _ y: Int) -> Bool {
-        return root[x] == root[y]
+        return find(x) == find(y)
     }
 }
+
