@@ -28,10 +28,39 @@
  There are no self edges.
  */
 
-//BFS
-// TC: O(), SC: O()
+// BFS
+// TC: O(v + e), SC: O(v + e)
 class Solution {
     func validPath(_ n: Int, _ edges: [[Int]], _ source: Int, _ destination: Int) -> Bool {
+        var graph = [Int: [Int]]()
+        var visited = Set<Int>()
+        var queue = [source]
         
+        for edge in edges {
+            let u = edge[0]
+            let v = edge[1]
+
+            graph[u, default: []].append(v)
+            graph[v, default: []].append(u)
+        }
+
+        visited.insert(source)
+
+        while !queue.isEmpty {
+            let node = queue.removeFirst()
+            
+            if node == destination {
+                return true
+            }
+
+            for next in graph[node, default: []] {
+                if !visited.contains(next) {
+                    visited.insert(next)
+                    queue.append(next)
+                }
+            }
+        }
+
+        return false
     }
 }
