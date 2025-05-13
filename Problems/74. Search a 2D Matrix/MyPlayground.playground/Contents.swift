@@ -23,7 +23,7 @@
  */
 
 // Binary Search
-// TC: O(m log n),
+// TC: O(log(mn)), since it's a standard binary search.
 // SC: O(1)
 class Solution {
     func searchMatrix(_ matrix: [[Int]], _ target: Int) -> Bool {
