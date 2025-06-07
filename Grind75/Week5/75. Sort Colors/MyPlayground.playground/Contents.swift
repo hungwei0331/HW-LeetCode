@@ -39,21 +39,20 @@ class Solution1 {
 // TC: O(n), SC: O(1)
 class Solution2 {
     func sortColors(_ nums: inout [Int]) {
-        var current = 0
         var begin = 0
+        var current = 0
         var end = nums.count - 1
-        
-        while current < nums.count {
+
+        while current <= end {
             if nums[current] == 0 {
-                nums.swapAt(current, begin)
+                nums.swapAt(begin, current)
                 begin = begin + 1
                 current = current + 1
             } else if nums[current] == 1 {
                 current = current + 1
             } else if nums[current] == 2 {
-                nums.swapAt(current, end)
+                nums.swapAt(end, current)
                 end = end - 1
-                current = current + 1
             }
         }
     }
