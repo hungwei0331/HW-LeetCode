@@ -39,12 +39,12 @@
 class Solution1 {
     func check(_ nums: [Int]) -> Bool {
         if nums.count == 1 { return true }
-        
+
         var tmpNums = nums + nums
         var count = 1
         
-        for i in 1..<tmpNums.count {
-            if tmpNums[i - 1] < tmpNums[i] {
+        for i in 0..<tmpNums.count - 1 {
+            if tmpNums[i] <= tmpNums[i + 1] {
                 count = count + 1
             } else {
                 count = 1
