@@ -27,29 +27,24 @@
 class Solution {
     func combinationSum(_ candidates: [Int], _ target: Int) -> [[Int]] {
         var result = [[Int]]()
-        var sortCandidates = candidates.sorted()
-        
-        func backtracking(_ start: Int, _ combination: [Int], _ remaining: Int) {
+
+        func backtrack(_ start: Int, _ combination: [Int], _ remaining: Int) {
             if remaining == 0 {
                 result.append(combination)
                 return
             }
-            
+
             if remaining < 0 {
                 return
             }
-            
-            for i in start..<sortCandidates.count {
-                let candidate = sortCandidates[i]
-                
-                if candidate > remaining {
-                    return
-                }
-                
-                backtracking(i, combination + [candidate], remaining - candidate)
+
+            for i in start..<candidates.count {
+                let candidate = candidates[i]
+
+                backtrack(i, combination + [candidate], remaining - candidate)
             }
         }
-        backtracking(0, [], target)
+        backtrack(0, [], target)
         return result
     }
 }
