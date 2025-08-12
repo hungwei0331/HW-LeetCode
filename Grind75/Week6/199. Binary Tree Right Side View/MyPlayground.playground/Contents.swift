@@ -65,3 +65,33 @@ class Solution {
         return result
     }
 }
+
+
+class Solution2 {
+    func rightSideView(_ root: TreeNode?) -> [Int] {
+        guard let root = root else { return [] }
+
+        var result = [Int]()
+        var queue = [root]
+
+        while !queue.isEmpty {
+            var nextLevel = [TreeNode]()
+
+            if let lastNode = queue.last {
+                result.append(lastNode.val)
+            }
+
+            for node in queue {
+                if let left = node.left {
+                    nextLevel.append(left)
+                }
+
+                if let right = node.right {
+                    nextLevel.append(right)
+                }
+            }
+            queue = nextLevel
+        }
+        return result
+    }
+}
